@@ -13,6 +13,13 @@ public class GameOverView : GameElement
 
     public void DisplayGameOver()
     {
-        goText.SetActive(true); // a mensagem GAME OVER fica activa
+        try // gestão de erros
+        {
+            goText.SetActive(true); // a mensagem GAME OVER fica activa
+        }
+        catch
+        {
+            Debug.Log("Game over View not displayed!");
+        }
     }
 }
