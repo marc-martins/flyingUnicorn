@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +20,20 @@ public class GameOverView : GameElement
         }
         catch
         {
-            Debug.Log("Game over View not displayed!");
+            throw new GameOverViewFailure("goText");
         }
+    }
+}
+
+//Criação duma excepção personalizada
+class GameOverViewFailure:Exception
+{
+    public GameOverViewFailure()
+    {
+
+    }
+    public GameOverViewFailure(string name): base(String.Format("Game over View not displayed!"))
+    {
+
     }
 }
