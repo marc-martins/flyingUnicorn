@@ -40,9 +40,16 @@ public class GameController : GameElement
     // Fim do jogo por colisão
     public void OnGameOver()
     {
-        app.view.unicorn.rb.velocity = Vector2.zero; ; // para o unicórnio
-        app.view.gameOverText.DisplayGameOver(); // pede a view para fazer o display do texto GAME OVER
-        Debug.Log("GAME OVER!");
+        try
+        {
+            app.view.unicorn.rb.velocity = Vector2.zero; ; // para o unicórnio
+            app.view.gameOverText.DisplayGameOver(); // pede a view para fazer o display do texto GAME OVER
+            Debug.Log("GAME OVER!");
+        }
+        catch(GameOverViewFailure ex)
+        {
+            Debug.Log(ex.Message);
+        }
     }
 
     public void OnYouWin()
@@ -52,3 +59,4 @@ public class GameController : GameElement
         Debug.Log("YOU WIN!");
     }
 }
+
