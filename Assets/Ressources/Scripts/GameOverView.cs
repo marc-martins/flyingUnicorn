@@ -32,7 +32,7 @@ class GameOverViewFailure:Exception
     {
 
     }
-    public GameOverViewFailure(string name): base(String.Format("Game over View not displayed!"))
+    public GameOverViewFailure(string name): base(String.Format("Game over View not displayed!", name))
     {
 
     }

@@ -49,6 +49,7 @@ public class GameController : GameElement
         catch(GameOverViewFailure ex)
         {
             Debug.Log(ex.Message);
+            Application.Quit();
         }
     }
 
