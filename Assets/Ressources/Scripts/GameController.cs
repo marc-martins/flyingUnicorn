@@ -6,20 +6,34 @@ using UnityEngine;
 // Controla o workflow do jogo
 public class GameController : GameElement
 {
+    public GameModel.IUnicornModel UnicornModel = GameModel.Animals.GiveMeAUnicorn();
+        
     public void InitialVelocity()
     {
-          app.view.unicorn.rb.velocity += new Vector2(app.model.gameSpeed, 0);
+        app.view.unicorn.rb.velocity += new Vector2(UnicornModel.Speed, 0);
     }
 
     public void UnicornMotion()
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            app.view.unicorn.rb.velocity += new Vector2(0, -app.model.gameSpeed);
+            app.view.unicorn.rb.velocity += new Vector2(0, -UnicornModel.Speed);
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            app.view.unicorn.rb.velocity += new Vector2(0, app.model.gameSpeed);
+            app.view.unicorn.rb.velocity += new Vector2(0, UnicornModel.Speed);
+        }
+    }
+
+    public void UnicornVelocity()
+    {
+        if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        {
+            app.view.unicorn.rb.velocity += new Vector2(UnicornModel.Accelerate(),0);
+        }
+        else if (Input.GetKeyDown(KeyCode.KeypadMinus))
+        {
+            app.view.unicorn.rb.velocity += new Vector2(-UnicornModel.Decelerate(),0);
         }
     }
 
